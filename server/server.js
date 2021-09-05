@@ -7,7 +7,6 @@ const movieRouter = require("./routes/movieRoute");
 
 // mongosh "mongodb+srv://mmdb.r1xr8.mongodb.net/mmdb" --username me --password *StrbvkS346
 
-
 const PASSWORD = process.env.PASSWORD;
 const PORT = process.env.PORT || 4510;
 
