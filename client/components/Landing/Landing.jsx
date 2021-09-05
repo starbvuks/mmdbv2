@@ -1,11 +1,9 @@
-import React from "react";
-import { MenuIcon } from "@heroicons/react/solid";
+import LandingCard from "./LandingCard.jsx";
 
-const Landing = () => {
+const Landing = ({ data }) => {
   return (
     <div>
-      <MenuIcon className="w-7 h-7" />
-      <span>dsfsdfsdfsdf</span>
+      <LandingCard />
     </div>
   );
 };

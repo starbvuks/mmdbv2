@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const path = require("path");
 const app = express();
 
@@ -11,6 +12,7 @@ const PASSWORD = process.env.PASSWORD;
 const PORT = process.env.PORT || 4510;
 
 // middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

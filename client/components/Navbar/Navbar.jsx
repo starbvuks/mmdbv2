@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MenuIcon } from "@heroicons/react/solid";
 
 import { MenuContext } from "../../context/MenuContext";
