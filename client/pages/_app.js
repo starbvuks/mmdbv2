@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import "../styles/global.css";
 
 import { MenuProvider } from "../context/MenuContext.js";
 

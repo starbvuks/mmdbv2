@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { MenuIcon } from "@heroicons/react/solid";
 
 import { MenuContext } from "../../context/MenuContext";
-import Menu from "./Menu.jsx";
+import NavMenu from "./NavMenu.jsx";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useContext(MenuContext);
@@ -16,8 +16,8 @@ const Navbar = () => {
       <span>mmdb</span>
       <MenuIcon className="w-7 h-7" onClick={() => menuClick()} />
       {isOpen ? (
-        <div className="flex flex-col bg-lightBlue fixed top-0 right-0 p-5 z-20 w-1/2 h-full transition ease-in-out duration-300">
-          <Menu menuClick={menuClick} />
+        <div className="flex flex-col bg-mainNav fixed top-0 right-0 z-20 w-2/7 h-full shadow-xl transition ease-in-out duration-300">
+          <NavMenu menuClick={menuClick} />
         </div>
       ) : null}
     </div>
