@@ -5,7 +5,7 @@ import Landing from "../components/Landing/Landing";
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-mainFadedSteel items-center h-full">
+    <div className="flex flex-col bg-mainFadedSteel items-center h-full pb-20">
       <Navbar />
       <Landing />
     </div>
