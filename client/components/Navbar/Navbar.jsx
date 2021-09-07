@@ -12,14 +12,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex w-full p-5 mb-76 justify-between items-center">
+    <div className="flex w-full p-5 mb-7 justify-between items-center">
       <img src="./mmdb-logo.png" alt="logo" className="w-1/4" />
-      <div className="bg-mainNavHead p-2 rounded-xl">
+      <button className="bg-mainNavHead p-2 rounded-xl">
         <MenuIcon
           className="w-10 h-10 text-mainYellow"
           onClick={() => menuClick()}
         />
-      </div>
+      </button>
       {isOpen ? (
         <div className="flex flex-col bg-mainNav fixed top-0 right-0 z-20 w-2/7 h-screen shadow-xl">
           <NavMenu menuClick={menuClick} />

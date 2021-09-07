@@ -6,11 +6,11 @@
 @tailwind utilities;
 
 body::-webkit-scrollbar {
-  width: 0.25rem;
+  width: 0.2rem;
 }
 body::-webkit-scrollbar-track {
-  background: #000000;
+  background: #2f3b3e;
 }
 body::-webkit-scrollbar-thumb {
-  background: #f5c53b;
+  background: #c3d8c8;
 }

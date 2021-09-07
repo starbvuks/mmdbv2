@@ -10,10 +10,9 @@ const NavMenu = ({ menuClick }) => {
   return (
     <div>
       <div className="flex flex-col items-center justify-center bg-mainNavHead py-5 px-7">
-        <Exit
-          className="text-mainGrey w-1/4 py-1 self-end"
-          onClick={() => menuClick()}
-        />
+        <button className="flex py-1 justify-end">
+          <Exit className="text-mainGrey w-1/4 " onClick={() => menuClick()} />
+        </button>
         <div className="flex flex-col items-center text-right text-lg text-mainGrey font-poppins">
           <span>
             Welcome to <br />
