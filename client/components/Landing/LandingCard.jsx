@@ -4,13 +4,9 @@ import axios from "axios";
 const LandingCard = () => {
   const [movies, setMovies] = useState([]);
 
-  const setVisibility = () => {
-    setDetailsVisible((prevState) => !prevState);
-  };
-
   useEffect(() => {
     axios
-      .get("http://localhost:4510/movies")
+      .get("http://localhost:451/movies")
       .then((res) => {
         console.log(res.data);
         setMovies(res.data);

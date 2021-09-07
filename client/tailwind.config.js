@@ -14,6 +14,7 @@ module.exports = {
     textColor: (theme) => ({
       mainYellow: "#f5c53b",
       mainGrey: "#c3d8c8",
+      mainFadedSteel: "#2e3c48",
     }),
     extend: {
       fontFamily: {
@@ -23,6 +24,9 @@ module.exports = {
       width: {
         "2/7": "28.5714286%",
       },
+      backgroundImage: (theme) => ({
+        landingBg: "url('https://wallpaperaccess.com/full/2325423.jpg')",
+      }),
     },
   },
   variants: {
