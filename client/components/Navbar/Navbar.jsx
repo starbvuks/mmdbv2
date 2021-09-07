@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex w-full p-5 justify-between items-center">
+    <div className="flex w-full p-5 mb-10 justify-between items-center">
       <img src="./mmdb-logo.png" alt="logo" className="w-1/4" />
       <div className="bg-mainNavHead p-2 rounded-xl">
         <MenuIcon

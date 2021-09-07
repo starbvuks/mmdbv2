@@ -1,11 +1,13 @@
 const router = require("express").Router();
-const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 
-const RegisterSchema = Joi.object({
+const User = require("../models/userModel");
+
+const schema = Joi.object({
   email: Joi.string().email().required(),
-  username: Joi.string().required(),
+  username: Joi.string(),
   password: Joi.string().required().min(6),
 });
 
@@ -15,14 +17,17 @@ const LoginSchema = Joi.object({
 });
 
 router.post("/register", async (req, res) => {
-  const { error } = RegisterSchema.validate(req.body);
+  const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+
+  const emailExists = await User.findOne({ email: req.body.email });
+  if (emailExists) return res.status(400).send("Email already exists");
 
   const salt = await bcrypt.genSalt(10);
   const hashPass = await bcrypt.hash(req.body.password, salt);
 
   const user = new User({
-    email: req.body.name,
+    email: req.body.email,
     username: req.body.username,
     password: hashPass,
   });
@@ -35,16 +40,23 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { error } = LoginSchema.validate(req.body);
+  const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const user = await User.findOne({ emai: req.body.email });
-  if (!user) return res.status(400).send("Email already exists");
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(400).send("Email is not found");
 
   const passwordValid = await bcrypt.compare(req.body.password, user.password);
   if (!passwordValid) return res.status(400).send("Invalid Password");
 
-  res.send("Login Successful");
+  const token = jwt.sign({ _id: user.id }, process.env.SECRET, (err, token) => {
+    if (err) throw err;
+    return res.status(200).json({
+      token: token,
+      user: { id: user._id, email: user.email, username: user.username },
+    });
+  });
+  res.header("token", token);
 });
 
 module.exports = router;
