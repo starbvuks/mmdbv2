@@ -11,6 +11,7 @@ module.exports = {
       mainFadedSteel: "#2e3c48",
     }),
     textColor: (theme) => ({
+      ...theme("colors"),
       mainYellow: "#f5c53b",
       mainGrey: "#c3d8c8",
       mainFadedSteel: "#2e3c48",

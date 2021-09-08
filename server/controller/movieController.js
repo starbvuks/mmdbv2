@@ -19,7 +19,7 @@ module.exports.getOne = (req, res) => {
     })
     .catch((err) => {
       return res
-        .stauts(400)
+        .status(400)
         .json({ message: err.message || "cant find entry" });
     });
 };

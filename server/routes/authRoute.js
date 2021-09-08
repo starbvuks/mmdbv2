@@ -36,13 +36,14 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { error } = schema.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ message: error.details[0].message });
 
   const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).send("Email is not found");
+  if (!user) return res.status(400).json({ message: "Email is not found" });
 
   const passwordValid = await bcrypt.compare(req.body.password, user.password);
-  if (!passwordValid) return res.status(400).send("Invalid Password");
+  if (!passwordValid)
+    return res.status(400).json({ message: "Invalid Password" });
 
   const token = jwt.sign({ _id: user.id }, process.env.SECRET, (err, token) => {
     if (err) throw err;
@@ -52,6 +53,18 @@ router.post("/login", async (req, res) => {
     });
   });
   res.header("token", token);
+});
+
+router.get("/login", async (req, res) => {
+  User.find({})
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      return res
+        .status(400)
+        .json({ message: err.message || "something went wrong" });
+    });
 });
 
 module.exports = router;
