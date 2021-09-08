@@ -1,4 +1,5 @@
-import React from "react";
+import Link from "next/link";
+
 import { XCircleIcon as Exit } from "@heroicons/react/solid";
 import { UserCircleIcon } from "@heroicons/react/solid";
 import { CollectionIcon } from "@heroicons/react/solid";
@@ -22,7 +23,9 @@ const NavMenu = ({ menuClick }) => {
         </div>
       </div>
       <div className="flex flex-col items-center gap-y-14 mt-10 font-poppins font-bold text-xl text-darkBlue">
-        <UserCircleIcon className="text-mainYellow w-1/3" />
+        <Link href="/login">
+          <UserCircleIcon className="text-mainYellow w-1/3 cursor-pointer" />
+        </Link>
         <CollectionIcon className="text-mainYellow w-1/3" />
         <StarIcon className="text-mainYellow w-1/3" />
         <BookmarkIcon className="text-mainYellow w-1/3" />

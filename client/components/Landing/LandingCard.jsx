@@ -34,19 +34,20 @@ const LandingCard = () => {
             <span className="font-semibold text-sm bg-mainFadedSteel p-1.5 mr-5 rounded-lg">
               {movie.rating}
             </span>
-            <div className="flex flex-col text-center gap-y-3 absolute top-0 bottom-0 right-0 left-0 text-sm bg-mainBlueSteel p-3 rounded-lg opacity-0 transition ease-in duration-400 hover:opacity-100">
-              <span className="font-bold text-2xl mt-2">{movie.name}</span>
+            <div className="flex flex-col text-center text-mainYellow justify-center gap-y-3 absolute top-0 bottom-0 right-0 left-0 text-sm bg-mainNavHead p-3 rounded-lg opacity-0 transition ease-in duration-400 hover:opacity-100">
+              <span className="font-bold text-2xl px-2">{movie.name}</span>
               <div className="flex gap-3 justify-center">
-                <span className="font-light text-sm bg-mainNavHead p-1.5 rounded-md text-mainGrey">
+                <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                   {movie.released}
                 </span>
-                <span className="font-light text-sm bg-mainNavHead p-1.5 rounded-md text-mainGrey">
+                <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                   {movie.rating} / 5
                 </span>
               </div>
-              <span className="font-medium">{movie.description}</span>
               <Link href={`/movie/${movie._id}`}>
-                <a>More Details</a>
+                <a className="bg-mainYellow text-mainFadedSteel font-semibold text-xs py-2 w-2/3 self-center mt-10 rounded-xl">
+                  More Details
+                </a>
               </Link>
             </div>
           </div>

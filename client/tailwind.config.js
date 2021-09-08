@@ -8,7 +8,6 @@ module.exports = {
       mainYellow: "#f5c53b",
       mainNav: "#2f3b3e",
       mainNavHead: "#3b5058",
-      mainBlueSteel: "#1a263b",
       mainFadedSteel: "#2e3c48",
     }),
     textColor: (theme) => ({
@@ -32,5 +31,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
