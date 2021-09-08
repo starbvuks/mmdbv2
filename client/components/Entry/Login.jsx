@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Router from "next/router";
 import Link from "next/link";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const [token, setToken] = useState();
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const tokenString = localStorage.getItem("user");
+    const userToken = JSON.parse(tokenString);
+    userToken ? setToken(userToken) : null;
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -16,12 +24,17 @@ const Login = () => {
         password: password,
       })
       .then((response) => {
-        console.log(response);
-        const token = response.data;
-        localStorage.setItem("token", token);
+        const resToken = response.data;
+        localStorage.setItem("user", JSON.stringify(resToken));
+
+        if (token) {
+          Router.push("/");
+        }
       })
       .catch((err) => setError(err.response));
   };
+
+  console.log(token);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-mainFadedSteel text-mainGrey py-12 px-4 sm:px-6 lg:px-8">
@@ -36,9 +49,7 @@ const Login = () => {
             Sign in to your account
           </h2>
           <p className="mt-2 text-center text-sm font-medium text-red-500">
-            {error.status == 400
-              ? error.data.message
-              : window.localStorage.reload()}
+            {error && error.status == 400 ? error.data.message : null}
           </p>
         </div>
         <form className="mt-8 space-y-6" method="POST" onSubmit={submitHandler}>

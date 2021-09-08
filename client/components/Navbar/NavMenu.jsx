@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import { XCircleIcon as Exit } from "@heroicons/react/solid";
@@ -8,6 +9,14 @@ import { BookmarkIcon } from "@heroicons/react/solid";
 import { BookOpenIcon } from "@heroicons/react/solid";
 
 const NavMenu = ({ menuClick }) => {
+  const [token, setToken] = useState();
+
+  useEffect(() => {
+    const tokenString = localStorage.getItem("user");
+    const userToken = JSON.parse(tokenString);
+    userToken ? setToken(userToken) : null;
+  }, []);
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center bg-mainNavHead py-5 px-7">
@@ -23,9 +32,19 @@ const NavMenu = ({ menuClick }) => {
         </div>
       </div>
       <div className="flex flex-col items-center gap-y-14 mt-10 font-poppins font-bold text-xl text-darkBlue">
-        <Link href="/login">
-          <UserCircleIcon className="text-mainYellow w-1/3 cursor-pointer" />
-        </Link>
+        {token ? (
+          <Link href="/profile">
+            <a className="text-mainYellow w-1/3 cursor-pointer">
+              <UserCircleIcon />
+            </a>
+          </Link>
+        ) : (
+          <Link href="/login">
+            <a className="text-mainYellow w-1/3 cursor-pointer">
+              <UserCircleIcon />
+            </a>
+          </Link>
+        )}
         <CollectionIcon className="text-mainYellow w-1/3" />
         <StarIcon className="text-mainYellow w-1/3" />
         <BookmarkIcon className="text-mainYellow w-1/3" />
