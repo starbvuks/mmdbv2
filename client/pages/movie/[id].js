@@ -5,9 +5,10 @@ import { useRouter } from "next/router";
 export const getStaticPaths = async () => {
   const res = await axios.get("http://localhost:451/movies");
   const data = res.data;
+
   const paths = data.map((movie) => {
     return {
-      params: { _id: movie._id.toString() },
+      params: { id: movie._id.toString() },
     };
   });
 
@@ -17,15 +18,15 @@ export const getStaticPaths = async () => {
   };
 };
 
-// export const getStaticProps = async (context) => {
-//   const id = context.params.id;
-//   const res = await axios.get("http://localhost:451/movies/" + id);
-//   const data = JSON.stringify(res);
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const res = await fetch("http://localhost:451/movies/" + id);
+  const data = await res.json();
 
-//   return {
-//     props: data,
-//   };
-// };
+  return {
+    props: data,
+  };
+};
 
 const MoviePage = ({ data }) => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const MoviePage = ({ data }) => {
 
   return (
     <div>
-      <span>{res}</span>
+      <span>yo</span>
     </div>
   );
 };

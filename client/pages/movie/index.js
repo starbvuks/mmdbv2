@@ -1,9 +1,10 @@
 import React from "react";
+import MoviePage from "./[id]";
 
 const index = () => {
   return (
     <div>
-      <span>yo</span>
+      <span>{MoviePage}</span>
     </div>
   );
 };
