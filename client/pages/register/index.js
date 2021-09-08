@@ -1,9 +1,9 @@
-import Login from "../../components/Entry/Login";
+import Register from "../../components/Entry/Register";
 
 const index = () => {
   return (
     <div>
-      <Login />
+      <Register />
     </div>
   );
 };
