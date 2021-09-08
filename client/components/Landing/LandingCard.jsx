@@ -9,7 +9,6 @@ const LandingCard = () => {
     axios
       .get("http://localhost:451/movies")
       .then((res) => {
-        console.log(res.data);
         setMovies(res.data);
       })
       .catch((err) => console.error(err));
