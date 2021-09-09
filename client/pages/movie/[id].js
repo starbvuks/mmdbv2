@@ -43,10 +43,10 @@ const MoviePage = ({ movie }) => {
           className="border-2 border-yellow-300 w-1/2"
         />
         <div className="flex flex-col">
-          <span className="text-mainYellow text-5xl font-bold">
+          <span className="text-mainYellow text-4xl font-bold">
             {data.name}
           </span>
-          <div className="text-mainGrey flex items-center gap-x-2 text-md font-semibold mt-5">
+          <div className="text-mainGrey flex items-center gap-x-2 text-sm font-semibold mt-5">
             <span className="bg-mainNavHead py-2 px-4 rounded-xl">
               {data.released}
             </span>{" "}
