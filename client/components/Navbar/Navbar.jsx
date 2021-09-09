@@ -13,10 +13,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex w-full p-5 mb-7 justify-between items-center">
+    <div className="flex w-full p-5 xl:px-48 mb-7 justify-between items-center">
       <Link href="/">
-        <a>
-          <img src="/mmdb-logo.png" alt="logo" className="w-1/4" />
+        <a className="w-1/4 md:w-32">
+          <img src="/mmdb-logo.png" alt="logo" />
         </a>
       </Link>
       <button className="bg-mainNavHead p-2 rounded-xl">
@@ -26,7 +26,7 @@ const Navbar = () => {
         />
       </button>
       {isOpen ? (
-        <div className="flex flex-col bg-mainNav fixed top-0 right-0 z-20 w-2/7 h-screen shadow-xl">
+        <div className="flex flex-col bg-mainNav fixed top-0 right-0 z-20 w-2/7 md:w-36 h-screen shadow-xl">
           <NavMenu menuClick={menuClick} />
         </div>
       ) : null}

@@ -15,16 +15,16 @@ const LandingCard = () => {
   }, []);
 
   return (
-    <div className="flex justify-center gap-7 flex-wrap mt-10 mx-5">
+    <div className="flex justify-center gap-7 flex-wrap mt-10 mx-5 lg:mx-10 xl:mx-32 ">
       {movies.map((movie, index) => (
         <div
-          className="flex flex-col flex-none mt-3 bg-mainNavHead w-5/12 rounded-xl shadow-lg relative transition ease-in duration-300 transform hover:scale-105"
+          className="flex flex-col flex-none mt-3 bg-mainNavHead w-5/12 sm:w-1/3 md:w-1/4 lg:w-1/5 rounded-xl shadow-lg relative transition ease-in duration-300 transform hover:scale-105"
           key={index}
         >
           <img
             src={movie.poster}
             alt="poster"
-            className="h-5/6 w-full object-cover rounded-t-xl"
+            className="h-5/6 md:h-58 w-full object-cover rounded-t-xl"
           />
           <div className="flex w-full justify-between items-center text-mainGrey font-poppins leading-tight">
             <span className="font-bold text-lg p-3 text-left">
