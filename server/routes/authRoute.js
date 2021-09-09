@@ -13,10 +13,11 @@ const schema = Joi.object({
 
 router.post("/register", async (req, res) => {
   const { error } = schema.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ message: error.details[0].message });
 
   const emailExists = await User.findOne({ email: req.body.email });
-  if (emailExists) return res.status(400).send("Email already exists");
+  if (emailExists)
+    return res.status(400).json({ message: "Email already exists" });
 
   const salt = await bcrypt.genSalt(10);
   const hashPass = await bcrypt.hash(req.body.password, salt);
@@ -28,9 +29,9 @@ router.post("/register", async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    res.send({ user: savedUser });
+    res.status(200).json({ message: savedUser });
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).json({ message: err });
   }
 });
 
@@ -55,7 +56,7 @@ router.post("/login", async (req, res) => {
   res.header("token", token);
 });
 
-router.get("/login", async (req, res) => {
+router.get("/", async (req, res) => {
   User.find({})
     .then((data) => {
       res.status(200).json(data);

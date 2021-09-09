@@ -36,22 +36,12 @@ const NavMenu = ({ menuClick }) => {
           <Link href="/profile">
             <a className="text-mainYellow w-1/3 cursor-pointer relative">
               <UserCircleIcon />
-              <div className="absolute top-1 bottom-0 right-0 left-0 opacity-0 transition ease-in-out duration-200 hover:opacity-100 hover:-translate-x-20">
-                <span className="bg-mainYellow text-mainFadedSteel text-lg font-bold py-1 px-3 rounded-lg">
-                  Profile
-                </span>
-              </div>
             </a>
           </Link>
         ) : (
           <Link href="/login">
             <a className="text-mainYellow w-1/3 cursor-pointer relative">
               <UserCircleIcon />
-              <div className="absolute top-1 bottom-0 right-0 left-0 opacity-0 transition ease-in-out duration-200 hover:opacity-100 hover:-translate-x-20">
-                <span className="bg-mainYellow text-mainFadedSteel text-lg font-bold py-1 px-2 rounded-xl">
-                  Login
-                </span>
-              </div>
             </a>
           </Link>
         )}
