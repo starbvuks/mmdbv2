@@ -4,8 +4,8 @@ import Link from "next/link";
 import axios from "axios";
 
 const Login = (props) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [token, setToken] = useState();
   const [error, setError] = useState("");
@@ -26,12 +26,11 @@ const Login = (props) => {
       .then((response) => {
         const resToken = response.data;
         localStorage.setItem("user", JSON.stringify(resToken));
-
-        if (token) {
-          Router.push("/");
-        }
       })
       .catch((err) => setError(err.response));
+    if (token) {
+      Router.push("/");
+    }
   };
 
   console.log(token);

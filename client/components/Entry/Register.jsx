@@ -4,9 +4,9 @@ import Link from "next/link";
 import axios from "axios";
 
 const Register = () => {
-  const [email, setEmail] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
 
@@ -54,7 +54,6 @@ const Register = () => {
                 Email address
               </label>
               <input
-                id="email-address"
                 name="email"
                 type="email"
                 autocomplete="email"
@@ -70,7 +69,6 @@ const Register = () => {
                 Username
               </label>
               <input
-                id="username"
                 name="username"
                 type="username"
                 autocomplete="username"
@@ -86,7 +84,6 @@ const Register = () => {
                 Password
               </label>
               <input
-                id="password"
                 name="password"
                 type="password"
                 autocomplete="current-password"
