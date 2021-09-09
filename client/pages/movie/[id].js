@@ -32,19 +32,40 @@ export const getStaticProps = async (context) => {
 
 const MoviePage = ({ movie }) => {
   const data = JSON.parse(movie);
-  const wallpaper = data.wallpaper;
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-mainFadedSteel">
+    <div className="min-h-screen items-center bg-mainFadedSteel">
       <Navbar />
-      <div className="px-10">
-        <img src={data.wallpaper} alt="poster" className="border-2" />
+      <div className="flex gap-5 px-7 mt-14">
+        <img
+          src={data.poster}
+          alt="poster"
+          className="border-2 border-yellow-300 w-1/2"
+        />
         <div className="flex flex-col">
-          <span className="text-mainGrey text-2xl font-bold">{data.name}</span>
-          <span className="text-mainGrey text-xl">
-            {data.production.director}
+          <span className="text-mainYellow text-5xl font-bold">
+            {data.name}
           </span>
+          <div className="text-mainGrey flex items-center gap-x-2 text-md font-semibold mt-5">
+            <span className="bg-mainNavHead py-2 px-4 rounded-xl">
+              {data.released}
+            </span>{" "}
+            <span className="bg-mainNavHead py-2 px-4 rounded-xl">
+              Rating:{" "}
+              <span className="text-md text-mainYellow">{data.rating} / 5</span>
+            </span>
+          </div>
+          <div className="bg-mainNavHead text-mainGrey flex flex-col p-3 gap-y-3 divide-solid divide-y divide-mainGrey rounded-xl mt-4">
+            <span className="text-2xl font-bold">Cast</span>
+            <span className="text-md font-medium pt-3">
+              {data.production.actors}
+            </span>
+          </div>
         </div>
+      </div>
+      <div className="flex flex-col gap-y-4 text-mainGrey px-7 mt-12">
+        <span className="text-4xl font-semibold font-montserrat">Overview</span>
+        <p className="text-mainGreyDark">{data.description}</p>
       </div>
     </div>
   );

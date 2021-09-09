@@ -14,7 +14,12 @@ module.exports = {
       ...theme("colors"),
       mainYellow: "#f5c53b",
       mainGrey: "#c3d8c8",
+      mainGreyDark: "#B3C7B8",
       mainFadedSteel: "#2e3c48",
+    }),
+    divideColor: (theme) => ({
+      ...theme("borderColors"),
+      mainGrey: "#c3d8c8",
     }),
     extend: {
       fontFamily: {
