@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
+import Navbar from "../../components/Navbar/Navbar";
+
 export const getStaticPaths = async () => {
   const res = await axios.get("http://localhost:451/movies");
   const data = await res.data;
@@ -29,12 +31,21 @@ export const getStaticProps = async (context) => {
 };
 
 const MoviePage = ({ movie }) => {
-  const router = useRouter();
-  console.log(router.query._id);
+  const data = JSON.parse(movie);
+  const wallpaper = data.wallpaper;
 
   return (
-    <div>
-      <span>{movie}</span>
+    <div className="min-h-screen flex flex-col items-center bg-mainFadedSteel">
+      <Navbar />
+      <div className="px-10">
+        <img src={data.wallpaper} alt="poster" className="border-2" />
+        <div className="flex flex-col">
+          <span className="text-mainGrey text-2xl font-bold">{data.name}</span>
+          <span className="text-mainGrey text-xl">
+            {data.production.director}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

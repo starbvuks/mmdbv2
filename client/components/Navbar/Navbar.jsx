@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { MenuIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 import { MenuContext } from "../../context/MenuContext";
 import NavMenu from "./NavMenu.jsx";
@@ -13,7 +14,11 @@ const Navbar = () => {
 
   return (
     <div className="flex w-full p-5 mb-7 justify-between items-center">
-      <img src="./mmdb-logo.png" alt="logo" className="w-1/4" />
+      <Link href="/">
+        <a>
+          <img src="/mmdb-logo.png" alt="logo" className="w-1/4" />
+        </a>
+      </Link>
       <button className="bg-mainNavHead p-2 rounded-xl">
         <MenuIcon
           className="w-10 h-10 text-mainYellow"
