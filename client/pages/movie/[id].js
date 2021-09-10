@@ -41,11 +41,11 @@ const MoviePage = ({ movie }) => {
   return (
     <div className="min-h-screen items-center bg-mainFadedSteel">
       <Navbar />
-      <div className="flex gap-5 px-7 mt-14 xl:pl-44 xl:pr-14">
+      <div className="flex gap-5 px-7 mt-14 xl:px-48">
         <img
           src={data.poster}
           alt="poster"
-          className="border-2 border-yellow-300 w-48 xl:w-1/3 object-cover"
+          className="border-2 border-yellow-300 w-48 xl:w-1/4 object-contain"
         />
         <div>
           <span className="text-mainYellow text-4xl xl:text-5xl font-bold break-all">
@@ -63,7 +63,7 @@ const MoviePage = ({ movie }) => {
         </div>
       </div>
       <div className="flex items-start mx-7 gap-3 xl:mx-44 lg:pb-20">
-        <div className="bg-mainNavHead text-mainGrey flex flex-col flex-1 p-4 rounded-xl mt-6 w-1/2 lg:w-1/3">
+        <div className="bg-mainNavHead text-mainGrey flex flex-col p-4 rounded-xl mt-6 w-1/2 lg:w-1/3">
           <button
             onClick={() => setDetails((prev) => !prev)}
             className="flex items-center justify-between gap-5 text-2xl font-bold"
