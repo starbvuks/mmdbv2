@@ -63,7 +63,7 @@ const MoviePage = ({ movie }) => {
         </div>
       </div>
       <div className="flex items-start mx-7 gap-3 xl:mx-44 lg:pb-20">
-        <div className="bg-mainNavHead text-mainGrey flex flex-col p-4 rounded-xl mt-6 w-1/2 lg:w-1/3">
+        <div className="bg-mainNavHead text-mainGrey flex flex-col p-4 rounded-xl mt-6 w-1/3 lg:w-1/3">
           <button
             onClick={() => setDetails((prev) => !prev)}
             className="flex items-center justify-between gap-5 text-2xl font-bold"
@@ -82,7 +82,7 @@ const MoviePage = ({ movie }) => {
             </span>
           ) : null}
         </div>
-        <div className="bg-mainNavHead text-mainGrey flex flex-col flex-1 p-4 rounded-xl mt-6 w-1/2 lg:w-2/3">
+        <div className="bg-mainNavHead text-mainGrey flex flex-col flex-1 p-4 rounded-xl mt-6 w-2/3 lg:w-2/3">
           <button
             onClick={() => setOverview((prev) => !prev)}
             className="flex items-center justify-between gap-5 text-2xl font-bold"
