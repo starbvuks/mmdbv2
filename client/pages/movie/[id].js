@@ -34,7 +34,9 @@ export const getStaticProps = async (context) => {
 
 const MoviePage = ({ movie }) => {
   const data = JSON.parse(movie);
+
   const [overview, setOverview] = useState(false);
+  const [details, setDetails] = useState(false);
 
   return (
     <div className="min-h-screen items-center bg-mainFadedSteel">
@@ -43,43 +45,59 @@ const MoviePage = ({ movie }) => {
         <img
           src={data.poster}
           alt="poster"
-          className="border-2 border-yellow-300 w-1/2 xl:w-1/3 object-cover"
+          className="border-2 border-yellow-300 w-48 xl:w-1/3 object-cover"
         />
-        <div className="flex flex-col">
+        <div>
           <span className="text-mainYellow text-4xl xl:text-5xl font-bold break-all">
             {data.name}
           </span>
           <div className="text-mainGrey flex items-center gap-x-2 text-sm xl:text-lg font-semibold mt-5 lg:mt-6">
-            <span className="bg-mainNavHead py-2 px-4 rounded-xl">
+            <span className="bg-mainNavHead py-1 px-2 lg:py-2 lg:px-4 rounded-xl">
               Released: {data.released}
             </span>{" "}
-            <span className="bg-mainNavHead py-2 px-4 rounded-xl">
+            <span className="bg-mainNavHead py-1 px-2 lg:py-2 lg:px-4 rounded-xl">
               Rating:{" "}
               <span className="text-md text-mainYellow">{data.rating} / 5</span>
             </span>
           </div>
-          <div className="flex flex-col items-start gap-y-4 text-mainGrey bg-mainNavHead p-5 rounded-xl mt-7 mr-10">
-            <button
-              onClick={() => setOverview((prev) => !prev)}
-              className="flex items-center gap-5 text-3xl font-semibold font-montserrat"
-            >
-              Overview
-              {overview ? (
-                <ChevronUpIcon className="w-8 h-8 bg-mainNav p-0.5 rounded-full" />
-              ) : (
-                <ChevronDownIcon className="w-8 h-8 bg-mainNav p-0.5 rounded-full" />
-              )}
-            </button>
-            {overview ? (
-              <p className="text-mainGreyDark">{data.description}</p>
-            ) : null}
-          </div>
-          <div className="bg-mainNavHead text-mainGrey flex flex-col p-3 gap-y-3 divide-solid divide-y divide-mainGrey rounded-xl mt-4 w-1/3">
-            <span className="text-2xl font-bold">Cast</span>
+        </div>
+      </div>
+      <div className="flex items-start mx-7 gap-3 xl:mx-44 lg:pb-20">
+        <div className="bg-mainNavHead text-mainGrey flex flex-col flex-1 p-4 rounded-xl mt-6 w-1/2 lg:w-1/3">
+          <button
+            onClick={() => setDetails((prev) => !prev)}
+            className="flex items-center justify-between gap-5 text-2xl font-bold"
+          >
+            Cast{" "}
+            {details ? (
+              <ChevronUpIcon className="w-8 h-8 bg-mainNav p-0.5 rounded-full" />
+            ) : (
+              <ChevronDownIcon className="w-8 h-8 bg-mainNav p-0.5 rounded-full" />
+            )}
+          </button>
+
+          {details ? (
             <span className="text-md font-medium pt-3">
               {data.production.actors}
             </span>
-          </div>
+          ) : null}
+        </div>
+        <div className="bg-mainNavHead text-mainGrey flex flex-col flex-1 p-4 rounded-xl mt-6 w-1/2 lg:w-2/3">
+          <button
+            onClick={() => setOverview((prev) => !prev)}
+            className="flex items-center justify-between gap-5 text-2xl font-bold"
+          >
+            Overview{" "}
+            {overview ? (
+              <ChevronUpIcon className="w-8 h-8 bg-mainNav p-0.5 rounded-full" />
+            ) : (
+              <ChevronDownIcon className="w-8 h-8 bg-mainNav p-0.5 rounded-full" />
+            )}
+          </button>
+
+          {overview ? (
+            <span className="text-md font-medium pt-3">{data.description}</span>
+          ) : null}
         </div>
       </div>
     </div>
