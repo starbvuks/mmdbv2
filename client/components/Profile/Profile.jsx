@@ -2,41 +2,51 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Profile = () => {
-  const [token, setToken] = useState([]);
   const [user, setUser] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const tokenString = localStorage.getItem("user");
     const userToken = JSON.parse(tokenString);
-    userToken ? setToken(userToken) : null;
-  }, []);
+    const id = userToken.user.id;
 
-  const id = token.user.id;
-
-  useEffect(() => {
     axios
       .get(`http://localhost:451/auth/${id}`)
       .then((res) => {
         setUser(res.data);
       })
       .catch((err) => console.error(err));
+
+    const fav = user.favorites;
+    fav.map((data) => {
+      axios
+        .get(`http://localhost:451/movies/${data}`)
+        .then((res) => {
+          setFavorites(res.data);
+        })
+        .catch((err) => console.error(err));
+    });
   }, []);
 
-  console.log(user);
+  console.log(favorites);
 
   return (
     <div className="flex flex-col mx-7 mt-7">
       <div className="flex font-poppins font-medium text-lg text-mainGrey">
         <div className="bg-mainGrey w-40 h-40 rounded-lg" />
         <div className="flex flex-col ml-4">
-          <span className="text-2xl font-semibold">token</span>
-          <span>token</span>
+          <span className="text-2xl font-semibold">{user.username}</span>
+          <span>{user.email}</span>
         </div>
       </div>
       <div className="mt-9">
         <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
           Favourites
         </span>
+        <div className="flex w-1/2 justify-between">
+          <span>{favorites.name}</span>
+          <span>{favorites.rating}</span>
+        </div>
       </div>
     </div>
   );
