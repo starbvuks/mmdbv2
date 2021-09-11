@@ -17,7 +17,6 @@ const Login = (props) => {
   }, []);
 
   const submitHandler = async (e) => {
-    e.preventDefault();
     await axios
       .post("http://localhost:451/auth/login", {
         email: email,

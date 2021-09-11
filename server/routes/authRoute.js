@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
     if (err) throw err;
     return res.status(200).json({
       token: token,
-      user: { id: user._id, email: user.email, username: user.username },
+      user: { id: user._id },
     });
   });
   res.header("token", token);
@@ -58,6 +58,18 @@ router.post("/login", async (req, res) => {
 
 router.get("/", async (req, res) => {
   User.find({})
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      return res
+        .status(400)
+        .json({ message: err.message || "something went wrong" });
+    });
+});
+
+router.get("/:id", async (req, res) => {
+  User.findById(req.params.id)
     .then((data) => {
       res.status(200).json(data);
     })

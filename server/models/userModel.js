@@ -8,6 +8,11 @@ var userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  favourites: [
+    {
+      id: mongoose.ObjectId,
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", userSchema);
