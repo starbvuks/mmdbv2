@@ -8,9 +8,9 @@ var userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  favourites: [
+  favorites: [
     {
-      id: mongoose.ObjectId,
+      type: String,
     },
   ],
 });

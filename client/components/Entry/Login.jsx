@@ -10,6 +10,10 @@ const Login = (props) => {
   const [token, setToken] = useState();
   const [error, setError] = useState("");
 
+  if (token) {
+    Router.push("/");
+  }
+
   useEffect(() => {
     const tokenString = localStorage.getItem("user");
     const userToken = JSON.parse(tokenString);
@@ -17,6 +21,7 @@ const Login = (props) => {
   }, []);
 
   const submitHandler = async (e) => {
+    e.preventDefault();
     await axios
       .post("http://localhost:451/auth/login", {
         email: email,
@@ -25,11 +30,9 @@ const Login = (props) => {
       .then((response) => {
         const resToken = response.data;
         localStorage.setItem("user", JSON.stringify(resToken));
+        window.location.reload();
       })
       .catch((err) => setError(err.response));
-    if (token) {
-      Router.push("/");
-    }
   };
 
   console.log(token);

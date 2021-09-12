@@ -17,15 +17,15 @@ const Profile = () => {
       })
       .catch((err) => console.error(err));
 
-    const fav = user.favorites;
-    fav.map((data) => {
+    const faves = user.favorites;
+    for (let i = 0; i < faves.length; i++) {
       axios
-        .get(`http://localhost:451/movies/${data}`)
+        .get(`http://localhost:451/movies/${faves[i]}`)
         .then((res) => {
-          setFavorites(res.data);
+          setFavorites((prev) => [...prev, res.data]);
         })
         .catch((err) => console.error(err));
-    });
+    }
   }, []);
 
   console.log(favorites);
@@ -43,10 +43,13 @@ const Profile = () => {
         <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
           Favourites
         </span>
-        <div className="flex w-1/2 justify-between">
-          <span>{favorites.name}</span>
-          <span>{favorites.rating}</span>
-        </div>
+        {favorites.map((favorite, index) => (
+          <div>
+            <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
+              {favorite.name}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
