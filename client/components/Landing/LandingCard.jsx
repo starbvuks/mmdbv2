@@ -1,17 +1,37 @@
 import { useState, useEffect } from "react";
+import { HeartIcon as Unfavorited } from "@heroicons/react/outline";
+import { HeartIcon as Favorited } from "@heroicons/react/solid";
 import Link from "next/link";
 import axios from "axios";
 
 const LandingCard = () => {
+  const [user, setUser] = useState([]);
   const [movies, setMovies] = useState([]);
 
+  useEffect(() => {}, []);
   useEffect(() => {
+    const tokenString = localStorage.getItem("user");
+    const userToken = JSON.parse(tokenString);
+    const id = userToken.user.id;
+
+    const getUserData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:451/auth/${id}`);
+        setUser(res.data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     axios
       .get("http://localhost:451/movies")
       .then((res) => {
         setMovies(res.data);
       })
       .catch((err) => console.error(err));
+
+    getUserData();
   }, []);
 
   return (
@@ -33,14 +53,17 @@ const LandingCard = () => {
             <span className="font-semibold text-sm bg-mainFadedSteel p-1.5 mr-5 rounded-lg">
               {movie.rating}
             </span>
-            <div className="flex flex-col text-center text-mainYellow justify-center gap-y-3 absolute top-0 bottom-0 right-0 left-0 text-sm bg-mainNavHead p-3 rounded-lg opacity-0 transition ease-in duration-400 hover:opacity-100">
+            <div className="flex flex-col text-center text-mainYellow justify-center gap-y-3 absolute top-0 bottom-0 right-0 left-0 text-sm bg-mainNavHead p-3 rounded-lg opacity-0 transition ease-in duration-400 hover:opacity-90">
               <span className="font-bold text-2xl px-2">{movie.name}</span>
-              <div className="flex gap-3 justify-center">
+              <div className="flex items-center gap-3 justify-center">
                 <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                   {movie.released}
                 </span>
                 <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                   {movie.rating} / 5
+                </span>
+                <span className="text-mainGrey mb-1">
+                  <Unfavorited className="w-5 h-5" />
                 </span>
               </div>
               <Link href={`/movie/${movie._id}`}>
