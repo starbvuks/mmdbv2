@@ -10,25 +10,38 @@ const Profile = () => {
     const userToken = JSON.parse(tokenString);
     const id = userToken.user.id;
 
-    axios
-      .get(`http://localhost:451/auth/${id}`)
-      .then((res) => {
+    const getUserData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:451/auth/${id}`);
         setUser(res.data);
-      })
-      .catch((err) => console.error(err));
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-    const faves = user.favorites;
-    for (let i = 0; i < faves.length; i++) {
-      axios
-        .get(`http://localhost:451/movies/${faves[i]}`)
-        .then((res) => {
-          setFavorites((prev) => [...prev, res.data]);
-        })
-        .catch((err) => console.error(err));
-    }
+    getUserData();
   }, []);
 
-  console.log(favorites);
+  useEffect(() => {
+    const getFavoritesData = async () => {
+      const faves = await user.favorites;
+      for (let i = 0; i < faves.length; i++) {
+        try {
+          const res = await axios.get(
+            `http://localhost:451/movies/${faves[i]}`
+          );
+          setFavorites((prev) => [...prev, res.data]);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    };
+
+    if (user.length !== 0) {
+      getFavoritesData();
+    }
+  }, [user]);
 
   return (
     <div className="flex flex-col mx-7 mt-7">
@@ -47,6 +60,7 @@ const Profile = () => {
           <div>
             <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
               {favorite.name}
+              {favorite.rating}
             </span>
           </div>
         ))}
