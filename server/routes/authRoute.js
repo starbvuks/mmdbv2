@@ -11,6 +11,11 @@ const schema = Joi.object({
   password: Joi.string().required().min(6),
 });
 
+const favoriteSchema = Joi.object({
+  id: Joi.string(),
+  favorite: Joi.string(),
+});
+
 router.post("/register", async (req, res) => {
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).json({ message: error.details[0].message });
@@ -78,6 +83,29 @@ router.get("/:id", async (req, res) => {
         .status(400)
         .json({ message: err.message || "something went wrong" });
     });
+});
+
+router.post("/:id", async (req, res) => {
+  const { error } = favoriteSchema.validate(req.body);
+  if (error) return res.status(400).json({ message: error.details[0].message });
+
+  const favExists = await User.findOne({ favorites: req.body.favorite });
+  if (favExists) return res.status(400).json({ message: "already favorited" });
+
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      $push: { favorites: req.body.favorite },
+    },
+
+    function (error, success) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(success);
+      }
+    }
+  );
 });
 
 module.exports = router;

@@ -8,17 +8,15 @@ const LandingCard = () => {
   const [user, setUser] = useState([]);
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {}, []);
-  useEffect(() => {
-    const tokenString = localStorage.getItem("user");
-    const userToken = JSON.parse(tokenString);
-    const id = userToken.user.id;
+  const tokenString = localStorage.getItem("user");
+  const userToken = JSON.parse(tokenString);
+  const id = userToken.user.id;
 
+  useEffect(() => {
     const getUserData = async () => {
       try {
         const res = await axios.get(`http://localhost:451/auth/${id}`);
         setUser(res.data);
-        console.log(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -33,6 +31,19 @@ const LandingCard = () => {
 
     getUserData();
   }, []);
+
+  const favoriteToggle = (e) => {
+    axios
+      .post(`http://localhost:451/auth/${id}`, {
+        favorite: e,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="flex justify-center gap-7 flex-wrap mt-10 mx-5 lg:mx-10 xl:mx-32 ">
@@ -62,9 +73,12 @@ const LandingCard = () => {
                 <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                   {movie.rating} / 5
                 </span>
-                <span className="text-mainGrey mb-1">
+                <button
+                  onClick={() => favoriteToggle(movie._id)}
+                  className="text-mainGrey mb-1"
+                >
                   <Unfavorited className="w-5 h-5" />
-                </span>
+                </button>
               </div>
               <Link href={`/movie/${movie._id}`}>
                 <a className="bg-mainYellow text-mainFadedSteel font-semibold text-xs py-2 w-2/3 self-center mt-10 rounded-xl">
