@@ -8,9 +8,11 @@ const LandingCard = () => {
   const [user, setUser] = useState([]);
   const [movies, setMovies] = useState([]);
 
-  const tokenString = localStorage.getItem("user");
-  const userToken = JSON.parse(tokenString);
-  const id = userToken.user.id;
+  if (typeof window !== "undefined") {
+    const tokenString = localStorage.getItem("user");
+    const userToken = JSON.parse(tokenString);
+    globalThis.id = userToken.user.id;
+  }
 
   useEffect(() => {
     const getUserData = async () => {
@@ -33,6 +35,7 @@ const LandingCard = () => {
   }, []);
 
   const favoriteToggle = (e) => {
+    const id = token.user.id;
     axios
       .post(`http://localhost:451/auth/${id}`, {
         favorite: e,
@@ -77,7 +80,12 @@ const LandingCard = () => {
                   onClick={() => favoriteToggle(movie._id)}
                   className="text-mainGrey mb-1"
                 >
-                  <Unfavorited className="w-5 h-5" />
+                  {user.favorites.length > 0 &&
+                  user.favorites.includes(movie._id) ? (
+                    <Favorited className="w-5 h-5" />
+                  ) : (
+                    <Unfavorited className="w-5 h-5" />
+                  )}
                 </button>
               </div>
               <Link href={`/movie/${movie._id}`}>

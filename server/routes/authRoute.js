@@ -96,16 +96,14 @@ router.post("/:id", async (req, res) => {
     { _id: req.params.id },
     {
       $push: { favorites: req.body.favorite },
-    },
-
-    function (error, success) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(success);
-      }
     }
-  );
+  )
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
 
 module.exports = router;
