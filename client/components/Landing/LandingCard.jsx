@@ -15,10 +15,14 @@ const LandingCard = () => {
   }
 
   useEffect(() => {
+    let mounted = true;
+
     const getUserData = async () => {
       try {
         const res = await axios.get(`http://localhost:451/auth/${id}`);
-        setUser(res.data);
+        if (mounted) {
+          setUser(res.data);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -27,11 +31,17 @@ const LandingCard = () => {
     axios
       .get("http://localhost:451/movies")
       .then((res) => {
-        setMovies(res.data);
+        if (mounted) {
+          setMovies(res.data);
+        }
       })
       .catch((err) => console.error(err));
 
     getUserData();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const favoriteToggle = (e) => {
