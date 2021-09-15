@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import "tailwindcss/tailwind.css";
 import "../styles/global.css";
 

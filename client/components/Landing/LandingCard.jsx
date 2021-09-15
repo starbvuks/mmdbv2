@@ -15,14 +15,10 @@ const LandingCard = () => {
   }
 
   useEffect(() => {
-    let mounted = true;
-
-    const getUserData = async () => {
+    const getUserData = () => {
       try {
-        const res = await axios.get(`http://localhost:451/auth/${id}`);
-        if (mounted) {
-          setUser(res.data);
-        }
+        const res = axios.get(`http://localhost:451/auth/${id}`);
+        setUser(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -31,21 +27,14 @@ const LandingCard = () => {
     axios
       .get("http://localhost:451/movies")
       .then((res) => {
-        if (mounted) {
-          setMovies(res.data);
-        }
+        setMovies(res.data);
       })
       .catch((err) => console.error(err));
 
     getUserData();
-
-    return () => {
-      mounted = false;
-    };
   }, []);
 
   const favoriteToggle = (e) => {
-    const id = token.user.id;
     axios
       .post(`http://localhost:451/auth/${id}`, {
         favorite: e,
@@ -57,6 +46,8 @@ const LandingCard = () => {
         console.log(err);
       });
   };
+
+  console.log(user.favorites);
 
   return (
     <div className="flex justify-center gap-7 flex-wrap mt-10 mx-5 lg:mx-10 xl:mx-32 ">
@@ -89,14 +80,7 @@ const LandingCard = () => {
                 <button
                   onClick={() => favoriteToggle(movie._id)}
                   className="text-mainGrey mb-1"
-                >
-                  {user.favorites.length > 0 &&
-                  user.favorites.includes(movie._id) ? (
-                    <Favorited className="w-5 h-5" />
-                  ) : (
-                    <Unfavorited className="w-5 h-5" />
-                  )}
-                </button>
+                ></button>
               </div>
               <Link href={`/movie/${movie._id}`}>
                 <a className="bg-mainYellow text-mainFadedSteel font-semibold text-xs py-2 w-2/3 self-center mt-10 rounded-xl">
