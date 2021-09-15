@@ -15,14 +15,14 @@ const LandingCard = () => {
   }
 
   useEffect(() => {
-    const getUserData = () => {
-      try {
-        const res = axios.get(`http://localhost:451/auth/${id}`);
+    axios
+      .get(`http://localhost:451/auth/${id}`)
+      .then((res) => {
         setUser(res.data);
-      } catch (err) {
+      })
+      .catch((err) => {
         console.log(err);
-      }
-    };
+      });
 
     axios
       .get("http://localhost:451/movies")
@@ -30,8 +30,6 @@ const LandingCard = () => {
         setMovies(res.data);
       })
       .catch((err) => console.error(err));
-
-    getUserData();
   }, []);
 
   const favoriteToggle = (e) => {
@@ -46,8 +44,6 @@ const LandingCard = () => {
         console.log(err);
       });
   };
-
-  console.log(user.favorites);
 
   return (
     <div className="flex justify-center gap-7 flex-wrap mt-10 mx-5 lg:mx-10 xl:mx-32 ">
@@ -80,7 +76,17 @@ const LandingCard = () => {
                 <button
                   onClick={() => favoriteToggle(movie._id)}
                   className="text-mainGrey mb-1"
-                ></button>
+                >
+                  {undefined !== user.favorites ? (
+                    user.favorites.includes(movie._id) ? (
+                      <Favorited className="w-5 h-5" />
+                    ) : (
+                      <Unfavorited className="w-5 h-5" />
+                    )
+                  ) : (
+                    <span>nah</span>
+                  )}
+                </button>
               </div>
               <Link href={`/movie/${movie._id}`}>
                 <a className="bg-mainYellow text-mainFadedSteel font-semibold text-xs py-2 w-2/3 self-center mt-10 rounded-xl">
