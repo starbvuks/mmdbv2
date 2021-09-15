@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Router from "next/router";
 import Link from "next/link";
 import axios from "axios";
 
@@ -15,7 +16,6 @@ const Profile = () => {
       try {
         const res = await axios.get(`https://mmdbv2.herokuapp.com/auth/${id}`);
         setUser(res.data);
-        console.log(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -44,6 +44,11 @@ const Profile = () => {
     }
   }, [user]);
 
+  const logoutHandler = () => {
+    localStorage.removeItem("user");
+    Router.push("/");
+  };
+
   return (
     <div className="flex flex-col mx-7 mt-7">
       <div className="flex font-poppins font-medium text-lg text-mainGrey">
@@ -51,6 +56,12 @@ const Profile = () => {
         <div className="flex flex-col ml-4">
           <span className="text-2xl font-semibold">{user.username}</span>
           <span>{user.email}</span>
+          <button
+            onClick={() => logoutHandler()}
+            className="bg-red-500 text-white font-poppins text-sm font-semibold mt-3 py-1.5 mr-28 rounded-xl"
+          >
+            Logout
+          </button>
         </div>
       </div>
       <div className="flex flex-col items-center mt-9">
