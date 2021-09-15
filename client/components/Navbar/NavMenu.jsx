@@ -19,11 +19,11 @@ const NavMenu = ({ menuClick }) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center bg-mainNavHead py-5 px-7">
-        <button className="flex py-1 justify-end">
-          <Exit className="text-mainGrey w-1/4 " onClick={() => menuClick()} />
-        </button>
-        <div className="flex flex-col items-center text-right text-lg text-mainGrey font-poppins">
+      <div className="flex flex-col items-center justify-center text-right text-lg bg-mainNavHead text-mainGrey py-5 px-7 font-poppins">
+        <div className="flex flex-col items-center">
+          <button className="flex w-full py-1 justify-end justify-self-end p-0">
+            <Exit className="text-mainGrey w-1/4" onClick={() => menuClick()} />
+          </button>
           <span>
             Welcome to <br />
             <span className="font-bold text-2xl text-mainYellow">MMDb</span>
