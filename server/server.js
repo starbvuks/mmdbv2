@@ -23,7 +23,10 @@ mongoose.connect(MONGO_URI, {
 });
 
 app.use("/", movieRoute);
+app.get("/", movieRoute);
+
 app.use("/auth", authRoute);
+app.get("/auth", authRoute);
 
 app.listen(PORT, () => {
   console.log(`connected to ${PORT}`);

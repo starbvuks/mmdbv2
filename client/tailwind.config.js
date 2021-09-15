@@ -32,6 +32,8 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         landingBg: "url('https://wallpaperaccess.com/full/2325423.jpg')",
+        landingBanner:
+          "linear-gradient(#2e3c48, rgba(0,0,0,0) 30%, #2e3c48), url('/landingbanner.jpg')",
       }),
     },
   },
