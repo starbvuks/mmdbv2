@@ -45,7 +45,7 @@ const LandingCard = () => {
               </div>
               <Link href={`/movie/${movie._id}`}>
                 <a className="bg-mainYellow text-mainFadedSteel font-semibold w-2/3 text-xs py-2 self-center mt-10 rounded-lg">
-                  Full Page
+                  Details
                 </a>
               </Link>
             </div>
