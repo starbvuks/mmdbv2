@@ -90,20 +90,33 @@ router.post("/:id", async (req, res) => {
   if (error) return res.status(400).json({ message: error.details[0].message });
 
   const favExists = await User.findOne({ favorites: req.body.favorite });
-  if (favExists) return res.status(400).json({ message: "already favorited" });
-
-  User.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $push: { favorites: req.body.favorite },
-    }
-  )
-    .then((data) => {
-      res.status(200).send(data);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+  if (favExists) {
+    User.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $pull: { favorites: req.body.favorite },
+      }
+    )
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  } else {
+    User.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $push: { favorites: req.body.favorite },
+      }
+    )
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  }
 });
 
 module.exports = router;

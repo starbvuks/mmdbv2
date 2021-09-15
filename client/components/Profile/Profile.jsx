@@ -60,7 +60,6 @@ const Profile = () => {
           <div>
             <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
               {favorite.name}
-              {favorite.rating}
             </span>
           </div>
         ))}
