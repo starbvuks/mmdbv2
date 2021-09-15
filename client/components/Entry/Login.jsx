@@ -23,7 +23,7 @@ const Login = (props) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:451/auth/login", {
+      .post("https://mmdbv2.herokuapp.com/auth/login", {
         email: email,
         password: password,
       })

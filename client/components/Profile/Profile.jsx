@@ -13,7 +13,7 @@ const Profile = () => {
 
     const getUserData = async () => {
       try {
-        const res = await axios.get(`http://localhost:451/auth/${id}`);
+        const res = await axios.get(`https://mmdbv2.herokuapp.com/auth/${id}`);
         setUser(res.data);
         console.log(res.data);
       } catch (err) {
@@ -30,7 +30,7 @@ const Profile = () => {
       for (let i = 0; i < faves.length; i++) {
         try {
           const res = await axios.get(
-            `http://localhost:451/movies/${faves[i]}`
+            `https://mmdbv2.herokuapp.com/movies/${faves[i]}`
           );
           setFavorites((prev) => [...prev, res.data]);
         } catch (err) {

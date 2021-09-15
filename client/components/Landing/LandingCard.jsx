@@ -16,7 +16,7 @@ const LandingCard = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:451/auth/${id}`)
+      .get(`https://mmdbv2.herokuapp.com/auth/${id}`)
       .then((res) => {
         setUser(res.data);
       })
@@ -25,7 +25,7 @@ const LandingCard = () => {
       });
 
     axios
-      .get("http://localhost:451/movies")
+      .get("https://mmdbv2.herokuapp.com/movies")
       .then((res) => {
         setMovies(res.data);
       })
@@ -34,7 +34,7 @@ const LandingCard = () => {
 
   const favoriteToggle = (e) => {
     axios
-      .post(`http://localhost:451/auth/${id}`, {
+      .post(`https://mmdbv2.herokuapp.com/auth/${id}`, {
         favorite: e,
       })
       .then((res) => {

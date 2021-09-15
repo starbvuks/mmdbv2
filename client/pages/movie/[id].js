@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar/Navbar";
 
 export const getStaticPaths = async () => {
-  const res = await axios.get("http://localhost:451/movies");
+  const res = await axios.get(`https://mmdbv2.herokuapp.com/movies`);
   const data = await res.data;
 
   const paths = data.map((movie) => {
@@ -24,7 +24,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch("http://localhost:451/movies/" + id);
+  const res = await fetch(`https://mmdbv2.herokuapp.com/movies/${id}`);
   const data = await res.text();
 
   return {
