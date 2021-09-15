@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import axios from "axios";
 
 const Profile = () => {
@@ -52,17 +53,21 @@ const Profile = () => {
           <span>{user.email}</span>
         </div>
       </div>
-      <div className="mt-9">
-        <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
+      <div className="flex flex-col items-center mt-9">
+        <span className="text-3xl mb-7 font-poppins font-bold text-mainGreyDark">
           Favourites
         </span>
-        {favorites.map((favorite, index) => (
-          <div>
-            <span className="text-2xl font-poppins font-semibold text-mainGreyDark">
-              {favorite.name}
-            </span>
-          </div>
-        ))}
+        <div className="flex flex-wrap justify-center gap-7">
+          {favorites.map((favorite, index) => (
+            <Link className="flex" href={`/movie/${favorite._id}`}>
+              <img
+                src={favorite.poster}
+                key={index}
+                className="w-1/4 rounded-lg hover:cursor-pointer"
+              />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
