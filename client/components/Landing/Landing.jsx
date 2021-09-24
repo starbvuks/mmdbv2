@@ -13,7 +13,7 @@ const Landing = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex items-center bg-landingBanner w-full h-72 bg-cover bg-center xl:h-full">
-        <span className="font-poppins font-bold text-5xl text-mainGrey px-7 py-36">
+        <span className="font-poppins font-bold text-5xl text-mainGrey px-7 py-36 xl:text-6xl xl:px-48">
           Our <br />
           Favorites
         </span>

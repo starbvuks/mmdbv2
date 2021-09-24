@@ -75,9 +75,9 @@ const LandingCard = () => {
                   {movie.rating} / 5
                 </span>
               </div>
-              <div className="flex items-center gap-3 mt-10 px-2">
+              <div className="flex items-center justify-center gap-3 mt-10 px-2">
                 <Link href={`/movie/${movie._id}`}>
-                  <a className="bg-mainYellow text-mainFadedSteel font-semibold w-2/3 text-xs py-2 rounded-lg">
+                  <a className="bg-mainYellow text-mainFadedSteel font-semibold w-2/3 xl:w-28 text-xs py-2 rounded-lg">
                     Details
                   </a>
                 </Link>
