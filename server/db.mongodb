@@ -1,0 +1,21 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('mmdb');
+
+db.movies.insert({
+    "name": "There Will Be Blood",
+    "released": 2007,
+    "genre": "epic",
+    "rating": 4.5,
+    "poster": "https://cdn.quotesgram.com/img/16/89/460701645-There-Will-Be-Blood-Poster.jpg",
+    "description": "Daniel Plainview is a ruthless oil prospector who goes on a relentless pursuit to become the most powerful oil tycoon. For this, he even resorts to manipulating and using his adopted son.",
+    "production": {
+      "director": "Paul Thomas Anderson",
+      "actors": "Daniel Day Lewis, Paul Dano, Dillon Freasier",
+      "music": "Jonny Greenwood"
+    },
+  },)

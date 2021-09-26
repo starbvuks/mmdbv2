@@ -50,7 +50,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col mx-7 mt-7">
+    <div className="flex flex-col items-center mx-7 mt-7 xl:mx-48">
       <div className="flex font-poppins font-medium text-lg text-mainGrey">
         <div className="bg-mainGrey w-40 h-40 rounded-lg" />
         <div className="flex flex-col ml-4">
@@ -64,7 +64,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-col items-center mt-9">
+      <div className="flex flex-col items-center mt-20">
         <span className="text-3xl mb-7 font-poppins font-bold text-mainGreyDark">
           Favourites
         </span>
@@ -74,7 +74,7 @@ const Profile = () => {
               <img
                 src={favorite.poster}
                 key={index}
-                className="w-1/4 rounded-lg hover:cursor-pointer"
+                className="w-1/4 md:w-1/6 lg:w-32 rounded-lg hover:cursor-pointer"
               />
             </Link>
           ))}
