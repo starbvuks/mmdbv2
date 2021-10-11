@@ -10,7 +10,9 @@ const authRoute = require("./routes/authRoute");
 // mongosh "mongodb+srv://mmdb.r1xr8.mongodb.net/mmdb" --username me --password *StrbvkS346
 dotenv.config();
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI =
+  process.env.MONGO_URI ||
+  "mongodb+srv://me:bL284UNe9XcqLWiO@mmdb.r1xr8.mongodb.net/mmdb?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 4510;
 
 // middleware
