@@ -34,7 +34,9 @@ const LandingCard = () => {
               {movie.rating}
             </span>
             <div className="flex flex-col text-center text-mainYellow justify-center gap-y-3 absolute top-0 bottom-0 right-0 left-0 text-sm bg-mainNavHead p-3 rounded-lg opacity-0 transition ease-in duration-400 hover:opacity-95">
-              <span className="font-bold text-2xl px-2">{movie.name}</span>
+              <span className="font-bold text-lg md:text-2xl px-2">
+                {movie.name}
+              </span>
               <div className="flex items-center gap-3 justify-center">
                 <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                   {movie.released}

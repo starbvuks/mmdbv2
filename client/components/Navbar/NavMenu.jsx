@@ -45,7 +45,11 @@ const NavMenu = ({ menuClick }) => {
             </a>
           </Link>
         )}
-        <CollectionIcon className="text-mainYellow w-1/3" />
+        <Link href="/catalogue">
+          <a className="text-mainYellow w-1/3 cursor-pointer relative">
+            <CollectionIcon />
+          </a>
+        </Link>
         <StarIcon className="text-mainYellow w-1/3" />
         <BookmarkIcon className="text-mainYellow w-1/3" />
         <BookOpenIcon className="text-mainYellow w-1/3" />
