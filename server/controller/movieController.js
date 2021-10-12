@@ -1,6 +1,7 @@
 const Movies = require("../models/movieModel");
 
 module.exports.getAll = (req, res) => {
+  // pagination
   const page = req.query.page;
   const limit = req.query.limit;
 
