@@ -6,16 +6,31 @@
 // Select the database to use.
 use('mmdb');
 
-db.movies.insert({
-    "name": "There Will Be Blood",
-    "released": 2007,
-    "genre": "epic",
-    "rating": 4.5,
-    "poster": "https://cdn.quotesgram.com/img/16/89/460701645-There-Will-Be-Blood-Poster.jpg",
-    "description": "Daniel Plainview is a ruthless oil prospector who goes on a relentless pursuit to become the most powerful oil tycoon. For this, he even resorts to manipulating and using his adopted son.",
+db.movies.insertMany([
+  {
+    "name": "A Clockwork Orange",
+    "released": 1971,
+    "genre": "drama",
+    "rating": 5,
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTY3MjM1Mzc4N15BMl5BanBnXkFtZTgwODM0NzAxMDE@._V1_.jpg",
+    "description": "Alex, a psychopathic delinquent, is imprisoned for murder and rape. In order to reduce his sentence, he volunteers for an experimental therapy conducted by the government, but it goes askew.",
     "production": {
-      "director": "Paul Thomas Anderson",
-      "actors": "Daniel Day Lewis, Paul Dano, Dillon Freasier",
-      "music": "Jonny Greenwood"
-    },
-  },)
+      "director": "Stanley Kubrick",
+      "actors": "Malcom McDowell, Adrienne Corri, Patrick Magee",
+      "music": "Wendy Carlos"
+    }, 
+  },
+  {
+    "name": "Kajillionaire",
+    "released": 2020,
+    "genre": "drama",
+    "rating": 4.5,
+    "poster": "https://i.ido.bi/assets/review/2020/09/Kajillionaire_poster.jpeg",
+    "description": "Old Dolio, the daughter of two scam artists, plots a new scheme to pay their rent. But when her parents invite a stranger, Melanie, to join their plan, Dolio's world turns upside down.",
+    "production": {
+      "director": "Miranda July",
+      "actors": "Evan Rachel Wood, Gina Rodriguez, Richard Jenkins",
+      "music": "Emile Mosseri"
+    }, 
+  },
+])

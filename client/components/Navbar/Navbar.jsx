@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex w-full p-5 xl:px-48 mb-7 justify-between items-center">
+    <div className="flex w-full p-5 xl:pt-8 xl:px-48 mb-7 justify-between items-center">
       <Link href="/">
         <a className="w-1/4 md:w-32">
           <img src="/mmdb-logo.png" alt="logo" />

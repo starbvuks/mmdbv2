@@ -7,7 +7,7 @@ const LandingCard = () => {
 
   useEffect(() => {
     axios
-      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=3")
+      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=10")
       .then((res) => {
         setMovies(res.data);
       })
@@ -18,7 +18,7 @@ const LandingCard = () => {
     <div className="flex justify-center gap-7 flex-wrap mt-10 mx-5 lg:mx-10 xl:mx-32 ">
       {movies.map((movie, index) => (
         <div
-          className="flex flex-col flex-none mt-3 bg-mainNavHead w-5/12 sm:w-1/3 md:w-1/4 lg:w-1/5 rounded-xl shadow-lg relative transition ease-in duration-300 transform hover:scale-105"
+          className="flex flex-col flex-none mt-3 bg-mainNavHead w-5/12 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 rounded-xl shadow-lg relative transition ease-in duration-300 transform hover:scale-105"
           key={index}
         >
           <img

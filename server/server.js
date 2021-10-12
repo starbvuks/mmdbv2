@@ -7,7 +7,7 @@ const app = express();
 const movieRoute = require("./routes/movieRoute");
 const authRoute = require("./routes/authRoute");
 
-// mongosh "mongodb+srv://mmdb.r1xr8.mongodb.net/mmdb" --username me --password *StrbvkS346
+// mongosh "mongodb+srv://mmdb.r1xr8.mongodb.net/mmdb" --username me --password *bL284UNe9XcqLWiO
 dotenv.config();
 
 const MONGO_URI =
