@@ -7,7 +7,7 @@ const LandingCard = () => {
 
   useEffect(() => {
     axios
-      .get("https://mmdbv2.herokuapp.com/movies")
+      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=3")
       .then((res) => {
         setMovies(res.data);
       })

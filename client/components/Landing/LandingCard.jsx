@@ -25,7 +25,7 @@ const LandingCard = () => {
       });
 
     axios
-      .get("https://mmdbv2.herokuapp.com/movies")
+      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=6")
       .then((res) => {
         setMovies(res.data);
       })
