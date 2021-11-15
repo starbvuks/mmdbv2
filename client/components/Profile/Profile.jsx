@@ -51,14 +51,17 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col bg-mainFadedSteel items-center mx-7 mt-7 xl:mx-48">
-      <div className="flex font-poppins font-medium text-lg text-mainGrey">
-        <div className="bg-mainGrey w-40 h-40 rounded-lg" />
-        <div className="flex flex-col ml-4">
+      <div className="flex flex-col items-center font-poppins font-medium text-lg text-mainGrey">
+        <img
+          src="https://i.pinimg.com/originals/1f/01/70/1f01701445a03d0eb322d4ae8c77795d.jpg"
+          className="bg-mainGrey w-40 rounded-lg"
+        />
+        <div className="flex flex-col mt-4 items-center">
           <span className="text-2xl font-semibold">{user.username}</span>
           <span>{user.email}</span>
           <button
             onClick={() => logoutHandler()}
-            className="bg-red-500 text-white font-poppins text-sm font-semibold mt-3 py-1.5 mr-28 rounded-xl"
+            className="bg-red-500 text-white font-poppins text-sm font-semibold mt-3 px-3 lg-px-0 py-1.5 rounded-xl"
           >
             Logout
           </button>

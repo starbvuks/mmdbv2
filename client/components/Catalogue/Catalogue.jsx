@@ -25,7 +25,7 @@ const Catalogue = () => {
       });
 
     axios
-      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=10")
+      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=20")
       .then((res) => {
         setMovies(res.data);
       })
@@ -49,30 +49,26 @@ const Catalogue = () => {
   return (
     <div className="mx-5 pb-20 lg:mx-10 xl:mx-48">
       <div className="flex flex-col">
-        <span className="font-poppins font-bold text-5xl text-mainGrey py-7 xl:text-6xl break-words">
+        <span className="font-poppins font-bold text-5xl text-mainGrey text-center sm:text-left py-10 sm:py-7 xl:text-6xl break-words">
           Popular Films
         </span>
       </div>
-      <div className="flex gap-9 flex-wrap mt-10">
+      <div className="flex justify-center sm:justify-start gap-6 flex-wrap lg:mt-6">
         {movies.map((movie, index) => (
           <div
-            className="flex flex-col flex-none mt-3 bg-mainNavHead w-5/12 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-56 rounded-xl shadow-lg relative transition ease-in duration-300 transform hover:scale-105"
+            className="flex flex-col flex-none mt-3 bg-mainNavHead w-5/12 sm:w-1/4 md:w-1/5 xl:w-48 rounded-xl shadow-lg relative transition ease-in duration-300 transform hover:scale-105"
             key={index}
           >
             <img
               src={movie.poster}
               alt="poster"
-              className="h-5/6 md:h-58 w-full object-cover rounded-t-xl"
+              className="h-full w-full object-cover rounded-xl"
             />
             <div className="flex w-full justify-between items-center text-mainGrey font-poppins leading-tight">
-              <span className="font-semibold text-md p-3 text-left truncate hover:invisible">
-                {movie.name}
-              </span>
-              <span className="font-semibold text-sm bg-mainFadedSteel px-1.5 py-1 mr-3 rounded-lg">
-                {movie.rating}
-              </span>
               <div className="flex flex-col select-none text-center text-mainYellow justify-center gap-y-3 absolute top-0 bottom-0 right-0 left-0 text-sm bg-mainNavHead p-3 rounded-lg opacity-0 transition ease-in duration-400 hover:opacity-95">
-                <span className="font-bold text-2xl px-2">{movie.name}</span>
+                <span className="font-bold text-lg lg:text-xl px-2">
+                  {movie.name}
+                </span>
                 <div className="flex items-center gap-3 justify-center">
                   <span className="font-light text-sm shadow-sm p-1.5 rounded-md text-mainGrey">
                     {movie.released}

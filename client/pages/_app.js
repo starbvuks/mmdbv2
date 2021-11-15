@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps, router }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="My Movie Database re-vamped by Sarvag Kalari"
+          content="My Movie Database - (MMDb) re-vamped by Sarvag Kalari"
         />
         <meta
           name="keywords"
