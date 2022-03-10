@@ -7,6 +7,19 @@ const Profile = () => {
   const [user, setUser] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
+  const sendMessage = async (e) => {
+    axios
+      .post("https://localhost:4510/api", {
+        body: user,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     const tokenString = localStorage.getItem("user");
     const userToken = JSON.parse(tokenString);
@@ -64,6 +77,12 @@ const Profile = () => {
             className="bg-red-500 text-white font-poppins text-sm font-semibold mt-3 px-3 lg-px-0 py-1.5 rounded-xl"
           >
             Logout
+          </button>
+          <button
+            onClick={() => sendMessage()}
+            className="bg-green-500 text-white font-poppins text-sm font-semibold mt-3 px-3 lg-px-0 py-1.5 rounded-xl"
+          >
+            Send Whatsapp Data
           </button>
         </div>
       </div>

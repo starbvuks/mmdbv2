@@ -9,15 +9,25 @@
     "@heroicons/react": "^1.0.4",
     "@tailwindcss/forms": "^0.3.3",
     "axios": "^0.21.3",
+    "events": "^3.3.0",
+    "fs": "^0.0.1-security",
+    "net": "^1.0.2",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-spinners": "^0.11.0"
+    "react-spinners": "^0.11.0",
+    "tls": "^0.0.1",
+    "twilio": "^3.75.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "name": "client",
   "version": "1.0.0",
