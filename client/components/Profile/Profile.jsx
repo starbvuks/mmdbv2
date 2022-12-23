@@ -7,13 +7,17 @@ const Profile = () => {
   const [user, setUser] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
-  const sendMessage = async (e) => {
-    axios
-      .post("https://localhost:4510/api", {
-        body: user,
-      })
+  const sendMessage = async () => {
+    await fetch("http://localhost:4510/test", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ body: user }),
+    })
       .then(function (response) {
         console.log(response);
+        console.log(user);
       })
       .catch(function (error) {
         console.log(error);
@@ -78,12 +82,12 @@ const Profile = () => {
           >
             Logout
           </button>
-          <button
+          {/* <button
             onClick={() => sendMessage()}
             className="bg-green-500 text-white font-poppins text-sm font-semibold mt-3 px-3 lg-px-0 py-1.5 rounded-xl"
           >
             Send Whatsapp Data
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="flex flex-col self-start mt-20">

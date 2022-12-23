@@ -8,7 +8,10 @@ const app = express();
 
 const movieRoute = require("./routes/movieRoute");
 const authRoute = require("./routes/authRoute");
-const twilioRoute = require("./routes/twilioRoute");
+
+const accountSid = "AC5e708b967d52f6f20bad1a1189d4c105";
+const authToken = "d228a07413000a990099d39dc93cabb6";
+const client = require("twilio")(accountSid, authToken);
 
 // mongosh "mongodb+srv://mmdb.r1xr8.mongodb.net/mmdb" --username me --password *bL284UNe9XcqLWiO
 dotenv.config();
@@ -36,12 +39,22 @@ app.get("/", movieRoute);
 app.use("/auth", authRoute);
 app.get("/auth", authRoute);
 
-app.use("/api", twilioRoute);
-app.get("/api", (req, res) => {
-  res.send("Hello World!");
+app.post("/test", (req, res) => {
+  console.log(req.body.body);
+  client.messages
+    .create({
+      from: "whatsapp:+14155238886",
+      to: "whatsapp:+919533586416",
+      body: `id: ${req.body.body._id}\nemail: ${req.body.body.email}\nusername: ${req.body.body.username}\n`,
+    })
+    .then(() => {
+      res.send(JSON.stringify({ success: true }));
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(JSON.stringify({ success: false }));
+    });
 });
-
-// app.get("/api", twilioRoute);
 
 app.listen(PORT, () => {
   console.log(`connected to ${PORT}`);
