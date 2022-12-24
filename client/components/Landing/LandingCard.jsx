@@ -16,7 +16,7 @@ const LandingCard = () => {
 
   useEffect(() => {
     axios
-      .get(`https://mmdbv2.herokuapp.com/auth/${id}`)
+      .get(`https://mmdbv2-production.up.railway.app/auth/${id}`)
       .then((res) => {
         setUser(res.data);
       })
@@ -25,7 +25,7 @@ const LandingCard = () => {
       });
 
     axios
-      .get("https://mmdbv2.herokuapp.com/movies?page=1&limit=10")
+      .get("https://mmdbv2-production.up.railway.app/movies?page=1&limit=10")
       .then((res) => {
         setMovies(res.data);
       })
@@ -34,7 +34,7 @@ const LandingCard = () => {
 
   const favoriteToggle = (e) => {
     axios
-      .post(`https://mmdbv2.herokuapp.com/auth/${id}`, {
+      .post(`https://mmdbv2-production.up.railway.app/auth/${id}`, {
         favorite: e,
       })
       .then((res) => {

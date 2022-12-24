@@ -31,7 +31,9 @@ const Profile = () => {
 
     const getUserData = async () => {
       try {
-        const res = await axios.get(`https://mmdbv2.herokuapp.com/auth/${id}`);
+        const res = await axios.get(
+          `https://mmdbv2-production.up.railway.app/auth/${id}`
+        );
         setUser(res.data);
       } catch (err) {
         console.log(err);
@@ -47,7 +49,7 @@ const Profile = () => {
       for (let i = 0; i < faves.length; i++) {
         try {
           const res = await axios.get(
-            `https://mmdbv2.herokuapp.com/movies/${faves[i]}`
+            `https://mmdbv2-production.up.railway.app/movies/${faves[i]}`
           );
           setFavorites((prev) => [...prev, res.data]);
         } catch (err) {

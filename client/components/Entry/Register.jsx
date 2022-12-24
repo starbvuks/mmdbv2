@@ -13,7 +13,7 @@ const Register = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     await axios
-      .post("https://mmdbv2.herokuapp.com/auth/register", {
+      .post("https://mmdbv2-production.up.railway.app/auth/register", {
         email: email,
         username: username,
         password: password,

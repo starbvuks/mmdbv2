@@ -23,7 +23,7 @@ const Login = (props) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     await axios
-      .post("https://mmdbv2.herokuapp.com/auth/login", {
+      .post("https://mmdbv2-production.up.railway.app/auth/login", {
         email: email,
         password: password,
       })
