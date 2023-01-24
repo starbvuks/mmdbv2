@@ -8,7 +8,7 @@ const Profile = () => {
   const [favorites, setFavorites] = useState([]);
 
   const sendMessage = async () => {
-    await fetch("http://localhost:4510/test", {
+    await fetch("https://mmdb-api.onrender.com/test", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,9 +31,7 @@ const Profile = () => {
 
     const getUserData = async () => {
       try {
-        const res = await axios.get(
-          `https://mmdbv2-production.up.railway.app/auth/${id}`
-        );
+        const res = await axios.get(`https://mmdb-api.onrender.com/auth/${id}`);
         setUser(res.data);
       } catch (err) {
         console.log(err);
@@ -49,7 +47,7 @@ const Profile = () => {
       for (let i = 0; i < faves.length; i++) {
         try {
           const res = await axios.get(
-            `https://mmdbv2-production.up.railway.app/movies/${faves[i]}`
+            `https://mmdb-api.onrender.com/movies/${faves[i]}`
           );
           setFavorites((prev) => [...prev, res.data]);
         } catch (err) {

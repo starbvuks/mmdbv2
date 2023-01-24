@@ -13,7 +13,7 @@ const Register = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     await axios
-      .post("https://mmdbv2-production.up.railway.app/auth/register", {
+      .post("https://mmdb-api.onrender.com/auth/register", {
         email: email,
         username: username,
         password: password,

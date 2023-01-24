@@ -7,9 +7,7 @@ import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar/Navbar";
 
 export const getStaticPaths = async () => {
-  const res = await axios.get(
-    `https://mmdbv2-production.up.railway.app/movies`
-  );
+  const res = await axios.get(`https://mmdb-api.onrender.com/movies`);
   const data = await res.data;
 
   const paths = data.map((movie) => {
@@ -26,9 +24,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(
-    `https://mmdbv2-production.up.railway.app/movies/${id}`
-  );
+  const res = await fetch(`https://mmdb-api.onrender.com/movies/${id}`);
   const data = await res.text();
 
   return {

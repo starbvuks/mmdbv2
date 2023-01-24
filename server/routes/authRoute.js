@@ -51,13 +51,17 @@ router.post("/login", async (req, res) => {
   if (!passwordValid)
     return res.status(400).json({ message: "Invalid Password" });
 
-  const token = jwt.sign({ _id: user.id }, process.env.SECRET, (err, token) => {
-    if (err) throw err;
-    return res.status(200).json({
-      token: token,
-      user: { id: user._id },
-    });
-  });
+  const token = jwt.sign(
+    { _id: user.id },
+    "" + process.env.SECRET,
+    (err, token) => {
+      if (err) throw err;
+      return res.status(200).json({
+        token: token,
+        user: { id: user._id },
+      });
+    }
+  );
   res.header("token", token);
 });
 
