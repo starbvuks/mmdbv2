@@ -7,7 +7,7 @@ const LandingCard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4510/movies?page=1&limit=10")
+      .get("https://mmdb-api.onrender.com/movies?page=1&limit=10")
       .then((res) => {
         setMovies(res.data);
       })
