@@ -18,7 +18,7 @@ dotenv.config();
 
 const MONGO_URI =
   process.env.MONGO_URI ||
-  "mongodb+srv://me:bL284UNe9XcqLWiO@mmdb.r1xr8.mongodb.net/mmdb?retryWrites=true&w=majority";
+  "mongodb+srv://me:L6m9pXSod5A3ZXUl@mmdb.r1xr8.mongodb.net/mmdb?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 4510;
 
 // middleware
